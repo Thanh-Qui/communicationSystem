@@ -1,0 +1,175 @@
+.status-delete {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 28px; /* Đặt kích thước vòng tròn */
+    max-height: 28px;
+    border-radius: 50%; /* Tạo hình tròn */
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+.status-delete:hover {
+    background-color: silver; /* Màu nền khi hover */
+}
+
+.status-delete span {
+  font-size: 24px;
+  color: rgb(3, 3, 130);
+}
+
+/* Mặc định hiển thị bảng cho desktop */
+/* .table-responsive {
+  display: block;
+} */
+
+.file-list-mobile, .pc-none {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+
+  .pc-none {
+    display: block;
+  }
+
+  .mobile-none {
+    display: none;
+  }
+
+  .table-responsive {
+    display: none; /* Ẩn bảng trên màn hình nhỏ */
+  }
+
+  .file-list-mobile {
+    display: block;
+    margin-top: 10px;
+    max-height: 380px; /* Giới hạn chiều cao của danh sách file */
+    overflow-y: auto; /* Thêm thanh cuộn dọc khi vượt quá chiều cao */
+  }
+
+  .file-item {
+    display: block; /* Chuyển thành block để các phần tử hiển thị theo cột */
+    margin-bottom: 15px;
+    padding: 10px 4px 10px 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  .file-item a {
+    text-decoration: none;
+  }
+
+  /* Đảm bảo thư mục và file có thể dễ dàng phân biệt */
+  .file-name strong {
+    font-weight: bold; /* Đảm bảo thư mục luôn in đậm */
+    color: black;
+  }
+
+  .file-name span {
+    font-weight: normal; /* Đảm bảo file không in đậm */
+    color: black;
+  }
+
+  /* Căn chỉnh biểu tượng và tên file */
+  .file-item i {
+    margin-right: 4px;
+    font-size: 18px; /* Giảm kích thước biểu tượng */
+  }
+
+  /* Giảm kích thước chữ và căn chỉnh */
+  .file-item .file-name {
+    font-weight: bold;
+    font-size: 14px; /* Kích thước chữ nhỏ hơn */
+    margin-bottom: 5px; /* Tạo khoảng cách giữa tên file và ngày tháng */
+  }
+
+  .file-item .file-modified {
+    font-size: 12px; /* Giảm kích thước chữ của ngày tháng */
+    color: #888;
+  }
+}
+
+
+/* CSS Title folder */
+
+.folder-list a {
+  text-decoration: none;
+  color: black;
+  border-radius: 18px;
+  padding: 0px 10px 0px 10px;
+}
+
+.folder-list a:hover {
+  background-color: #ecf0f1;
+}
+
+/* Trash */
+.cs-text a {
+  text-decoration: none;
+  color: black;
+}
+
+.text-drive-span span {
+  font-size: 14px;
+}
+
+/* To do list */
+
+.btn-todo {
+  padding: 13px 17px;
+  max-height: 45px;
+}
+
+.task-card {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.task-card ul {
+  margin-right: 5px;
+}
+
+.task-card::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+.task-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.task-card::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.task-card::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@media (max-width: 768px) {
+  .task-card::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+}
+
+/* nút dropdown chức năng */
+
+.dot-func {
+  color: black;
+  font-size: 16px;
+  padding: 4px 7px;
+  border-radius: 15px;
+  transition: all 0.1s ease-in-out;
+}
+
+.dot-func:hover {
+  background: #d3dadf;
+}

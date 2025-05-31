@@ -1,0 +1,192 @@
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Khoảng cách giữa các hình */
+}
+
+.image-item {
+    width: calc(12.222% - 10px); /* 6 tấm hình trên mỗi hàng, với khoảng cách */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị kéo dài hoặc bóp méo */
+    height: auto; /* Đảm bảo chiều cao tự động sao cho không dài hơn chiều ngang */
+    max-height: 150px; /* Bạn có thể điều chỉnh chiều cao tối đa của hình ảnh */
+    cursor: pointer; /* Thay đổi con trỏ khi hover */
+}
+
+/* CSS cho modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(23, 23, 23, 0.9);
+}
+
+.modal-content {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.15s;
+    animation-name: zoom;
+    animation-duration: 0.15s;
+    margin: auto;
+    display: block;
+    width: 50%;
+    height: calc(100vh - 150px);
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.memberIconClick {
+    color: green;
+    font-size: 20px;
+}
+
+.memberIconClick:active {
+    color: red;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 500px;
+    color: #1b2850;
+    font-weight: 1000;
+    font-size: 32px;
+}
+
+
+/* Biểu đồ tròn thể hiện tài khoản người dùng */
+.chartPie {
+    border-top: 3px solid #007bff;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+    margin-bottom: 10px;
+}
+
+.header-chart {
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding-top: 10px;
+    height: 35px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* ảnh load trang */
+#global-loader {
+    position: relative;
+   
+}
+
+#global-loader img {
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+}
+
+/* form khôi phục mật khẩu */
+.modal-restore {
+    margin: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.restore_button {
+    border: 0px;
+    background: transparent;
+}
+
+
+
+/* Màn hình điện thoại */
+@media (max-width: 767px) {
+
+    .header-chart p {
+        font-size: 16px;
+    }
+
+    .header-title {
+        display: none;
+    }
+
+    .image-item {
+        width: calc(50% - 10px); /* 6 tấm hình trên mỗi hàng, với khoảng cách */
+        object-fit: cover; /* Đảm bảo hình ảnh không bị kéo dài hoặc bóp méo */
+        height: auto; /* Đảm bảo chiều cao tự động sao cho không dài hơn chiều ngang */
+        max-height: 100px; /* Bạn có thể điều chỉnh chiều cao tối đa của hình ảnh */
+        cursor: pointer; /* Thay đổi con trỏ khi hover */
+    }
+
+    .modal {
+        padding-top: 60px; /* Giảm khoảng cách trên */
+    }
+
+    .modal-content {
+        width: 90vw; /* Chiếm 90% chiều ngang màn hình */
+        height: auto; /* Chiều cao tự động theo tỉ lệ ảnh */
+        max-height: 80vh; /* Giới hạn chiều cao tối đa */
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .modal .close {
+        font-size: 32px;
+    }
+
+    .close {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+        position: absolute;
+        color: #fff;
+        z-index: 5001;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap; /* Cho phép phân trang hiển thị theo chiều ngang trên màn hình nhỏ */
+        gap: 8px; /* Khoảng cách giữa các trang */
+    }
+
+    .pagination a, .pagination span {
+        font-size: 14px; /* Giảm kích thước chữ trên thiết bị di động */
+        padding: 5px 8px; /* Điều chỉnh padding cho vừa vặn hơn */
+    }
+
+    .pagination li {
+        margin: 0 4px; /* Giảm margin giữa các phần tử */
+    }
+
+    .image-gallery {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
+
+@media (max-width: 1366px) {
+    .header-title {
+        display: none;
+    }
+
+    .chartPie {
+        margin-top: 25px;
+    }
+}

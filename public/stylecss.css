@@ -1,0 +1,997 @@
+.background-custom {
+    background: url('images/background.jpg');
+}
+
+.container {
+    background: url('images/background404.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 110%;
+    height: 80%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+
+
+/* Form tìm kiếm user để thêm vào nhóm chat */
+
+#searchUserForm {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+#username {
+    flex: 1; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px; 
+}
+
+.btn-primary {
+    background-color: #007bff; 
+    color: white;
+    border: none; 
+    padding: 10px 10px; 
+    border-radius: 5px; 
+    font-size: 16px;
+    cursor: pointer; 
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+#searchResults {
+    background: #f9f9f9;
+    border-radius: 7px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#selectedUser {
+    background: #e2f0d9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    border: 1px solid #c3e6cb;
+}
+
+
+/* nút thêm người dùng vào nhóm */
+.btn-addUser{
+    width: 80%;
+    border-radius: 5px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    color: #00e47a;
+}
+
+.btn-addUser:hover {
+    background: rgba(85, 255, 150, 0.11);
+}
+
+
+/* hình ảnh */
+/* .image-preview {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    display: none; 
+} */
+
+
+
+/*  css về tìm kiếm tin nhắn */
+
+.highlight {
+    background-color: #fff200; /* Màu nền highlight */
+    font-weight: bold;
+}
+.active-highlight {
+    background-color: orange; /* Màu nổi bật hơn cho từ đang được chọn */
+}
+
+#search-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    z-index: 10; 
+}
+
+#search-container input {
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+#search-container button {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.custom-search {
+    margin: 5px;
+}
+  
+.custom-search a i {
+    color: #bdc3c7;
+    margin-right: 7px;
+    transition: color 0.1s ease;
+}
+
+.custom-search a i:hover {
+    color: #0d6efd;
+}
+
+/* /nút ghi âm */
+.sendAudio-button {
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    min-width: 39px;
+    font-size: 18px;
+}
+
+.sendAudio-button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    min-width: 39px;
+    
+}
+
+.sendAudio-button.recording {
+    background-color: red !important;
+}
+
+
+/* Modal style */
+.sendVideo-button {
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    min-width: 39px;
+    font-size: 18px;
+}
+
+.sendVideo-button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    min-width: 39px;
+    
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 500px;
+  }
+
+  .modal-backdrop {
+    z-index: -1;
+  }
+  
+  /* Close button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-content button {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* form thông báo mở ghi âm và ghi hình */
+
+  .notification_audio {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+    font-size: 18px;
+  }
+
+
+
+  /*  Login bằng mã qr  **************************************/
+
+  #qr-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: #2577af;
+}
+
+
+.qr-container {
+    background-color: #fff;
+    padding: 70px;
+    border: 5px solid #27ae60;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.qr-container h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .qr-container {
+        padding: 20px;
+    }
+
+    .qr-container h2 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Css quét mã qr ******************** */
+
+.container-scanner {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #2558af, #27ae9e);
+    color: #fff;
+}
+
+/* Nút quét QR */
+button#start-qr-scanner {
+    background-color: #27ae60;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button#start-qr-scanner:hover {
+    background-color: #1e8e4e;
+    transform: scale(1.05);
+}
+
+button#start-qr-scanner:active {
+    transform: scale(0.95);
+}
+    
+#qr-reader {
+    width: 90%;
+    max-width: 500px;
+    height: 400px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 20px; /* Làm bo góc tròn */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: none; /* Mặc định ẩn */
+    overflow: hidden; /* Ẩn nội dung tràn để phù hợp với hình dạng bo góc */
+}
+
+/* Nếu muốn khung gần như hình elip, điều chỉnh border-radius */
+@media (max-width: 768px) {
+    #qr-reader {
+        height: 300px;
+        border-radius: 30px; /* Bo góc hơn trên thiết bị nhỏ */
+    }
+}
+
+/* css cho đường link  **************************/
+.message-link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #ffffff;
+    width: fit-content;
+    max-width: 300px; /* Đặt chiều rộng tối đa */
+    margin: 10px auto;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.message-link:hover {
+    border-color: #4CAF50;
+    background-color: #e8f5e9;
+    color: #4CAF50;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.message-text {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Đảm bảo văn bản không tràn ra ngoài */
+    color: inherit; /* Giữ màu sắc thừa kế từ .message-link */
+}
+
+.message-icon img {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border-radius: 50%; /* Hình tròn cho biểu tượng */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*  nút chỉnh background của kênh chat */
+#backgroundForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 35px;
+    width: 35px;
+    background: url("images/iconbgnew.png");
+    background-size: cover;
+    margin-bottom: 0px;
+}
+
+.background-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.background_btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#background_input {
+    width: 40px; /* Adjust the width to make it small */
+    height: 40px; /* Adjust the height to match the icon size */
+    background-color: #4CAF50; /* Green background */
+    border-radius: 50%; /* Makes it circular */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#background_input:hover {
+    background-color: #45a049; /* Darker green when hovered */
+}
+
+#background_input::before {
+    content: url('path_to_your_icon.svg'); /* Replace with an appropriate icon image */
+    width: 20px; /* Icon size */
+    height: 20px; /* Icon size */
+}
+
+@media (max-width: 768px) {
+    #background_input {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Thả tim */
+
+.reaction-wrapper .reaction {
+    margin-top: -10px;
+    color: red;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 3px 8px;
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    width: 52px;
+    height: 24px;
+}
+
+/* Css chức năng vẽ hình */
+
+#drawingBoardModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#drawingBoardModal button {
+    float: right;
+    margin: 10px;
+}
+
+#colorPicker {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.color-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.2);
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    min-width: 545px;
+    min-height: 510px;
+    overflow: auto; /* Đảm bảo nội dung có thể cuộn khi vượt quá kích thước */
+}
+
+
+#closeCanvas {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
+}
+
+#closeCanvas:hover {
+    color: #e74c3c; /* Đổi màu khi hover */
+    transform: scale(1.2); /* Phóng to nhẹ khi hover */
+}
+
+#drawingBoardModal button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#drawingBoardModal button:hover {
+    background-color: #2980b9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+#eraseButton {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#eraseButton.active {
+    background-color: #c0392b;
+}
+
+#buttonContainer {
+    display: flex;               /* Đặt các nút theo hàng ngang */
+    justify-content: flex-end; /* Căn các nút về phía bên trái */
+    gap: 10px;                   /* Khoảng cách giữa các nút */
+    margin-top: 10px;            /* Khoảng cách trên cùng của container */
+}
+
+#buttonContainer button {
+    padding: 8px 12px;           /* Thêm khoảng cách xung quanh văn bản */
+    font-size: 14px;             /* Kích thước chữ của nút */
+    cursor: pointer;            /* Con trỏ chuột khi hover */
+    background-color: #3498db;  /* Màu nền */
+    color: white;                /* Màu chữ */
+    border: none;                /* Bỏ viền */
+    border-radius: 5px;          /* Bo tròn góc của nút */
+    transition: background-color 0.2s ease; /* Hiệu ứng khi hover */
+}
+
+#buttonContainer button:hover {
+    background-color: #2980b9;   /* Màu nền thay đổi khi hover */
+}
+
+
+/* Đặt giao diện cho màn hình điện thoại */
+@media (max-width: 767px) {
+    #drawingBoardModal {
+        padding: 10px; /* Thêm khoảng cách xung quanh modal */
+    }
+
+    .modal-content {
+        min-width: 100%; /* Cho phép modal chiếm toàn bộ chiều rộng màn hình */
+        min-height: auto; /* Loại bỏ chiều cao tối thiểu cố định */
+        max-height: 90vh; /* Đảm bảo nội dung không vượt quá 90% chiều cao màn hình */
+        overflow-y: auto; /* Cho phép cuộn nếu nội dung quá dài */
+        box-sizing: border-box; /* Tính cả padding trong kích thước phần tử */
+    }
+
+    canvas#drawingCanvas {
+        width: 100%; /* Cho phép canvas chiếm hết chiều rộng modal */
+        height: auto; /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+    }
+
+    #colorPicker {
+        flex-wrap: wrap; /* Đặt các nút màu xuống dòng nếu không đủ chỗ */
+        justify-content: center; /* Căn giữa các nút */
+        gap: 5px; /* Khoảng cách giữa các nút */
+    }
+
+    #buttonContainer {
+        flex-direction: column; /* Đặt các nút thành cột */
+        align-items: stretch; /* Kéo dãn các nút để vừa toàn bộ chiều rộng */
+        gap: 10px; /* Khoảng cách giữa các nút */
+    }
+
+    #buttonContainer button {
+        width: 100%; /* Đặt nút rộng 100% màn hình */
+    }
+
+    #closeCanvas {
+        font-size: 24px; /* Tăng kích thước biểu tượng đóng để dễ bấm */
+        top: 5px; /* Điều chỉnh vị trí cho vừa trên màn hình nhỏ */
+        right: 5px;
+    }
+}
+
+
+/* css nút ẩn các btn chức năng ghi hình và vẽ */
+/* Định dạng nút 3 chấm */
+#displayButton {
+    position: relative;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Form nổi */
+#hiddenButtons {
+    position: absolute;
+    bottom: 50px; /* Khoảng cách phía trên nút 3 chấm */
+    right: 0; /* Canh lề phải */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000; /* Đảm bảo form nổi trên các thành phần khác */
+    display: none; /* Ẩn ban đầu */
+    min-width: 150px; /* Chiều rộng tối thiểu */
+}
+
+/* Nút bên trong form nổi */
+#hiddenButtons button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 8px 10px;
+    margin: 5px 0;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+
+#hiddenButtons button:hover {
+    background-color: #2980b9;
+}
+
+
+.letter {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+}
+
+.letter p {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 1px 0px;
+    border-radius: 50%;
+    min-width: 15px;
+    text-align: center;
+}
+
+
+
+/* *********** css trang tin tức */
+
+.sn-header {
+    background-color: #3c6382;
+    box-shadow: 0px 1px 5px 2px rgb(191, 211, 222);
+    min-height: 70px;
+    text-align: center;
+    align-content: center;
+    color: white;
+}
+
+.sn-header img {
+    max-height: 50px;
+}
+
+.sn-header p {
+    margin: 0px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.sn-title {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.sn-title p {
+    color: #8395a7;
+}
+
+.sn-title p a {
+    text-decoration: none;
+    color: #3867d6;
+}
+
+
+.sn-container {
+    max-width: 70%;
+    margin: 20px auto;
+}
+
+.container-notify a {
+    text-decoration: none;
+}
+
+.sn-notification {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+    /* border: 0.5px solid #ddd; */
+}
+
+.sn-notification:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.sn-notification .content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.sn-notification img {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.sn-notification .title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0d6efd;
+    text-decoration: none;
+    margin: 0;
+}
+
+.sn-notification .date {
+    color: #6c757d;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.sn-content h3 {
+    text-align: center;
+}
+
+.sn-content > p {
+    text-align: end;
+    color: #95a5a6;
+}
+
+.sn-main-content p {
+    font-size: 16px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    max-width: 90%;
+    text-align: justify;
+}
+
+/* profile và logout trong trang news */
+.dropdown-custom a {
+    color: black;
+    text-decoration: none;
+}
+
+/* form bình chọn */
+/* width */
+.scrollbar-custom::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.share-display {
+    max-height: 200px;
+    overflow: auto;
+
+}
+
+.share-display::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.share-display::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.share-display::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.share-display::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.reply-message {
+    background: #c7e0ff !important;
+    color: black;
+    padding: 10px;
+    border-radius: 3px;
+    border-left: 4px solid blue;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.reply-message p {
+    margin-bottom: 7px;
+}
+
+.reply-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f1f2f6;
+    border-left: 3px solid #2ecc71;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.reply-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    max-width: calc(100% - 30px);
+}
+
+.reply-icon {
+    color: #2ecc71;
+}
+
+.reply-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #555;
+    font-size: 14px;
+}
+
+.cancel-reply {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.cancel-reply:hover {
+    color: #e74c3c;
+}
+
+/* Optional: add a small animation for the reply preview */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reply-preview {
+    animation: slideDown 0.2s ease-out;
+}
+
+.message.highlight-border {
+    border: 2px solid yellow;
+    transition: border 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .sn-header p {
+        margin: 0px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    .sn-container {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+
+    .poll-box {
+        width: 320px;
+    }
+}
